@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPI Nutrition - Optimize Your Biological Age</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        epi: {
+                            dark: '#051d3f',
+                            blue: '#4f7fe8',
+                            teal: '#60ceb8',
+                            light: '#f5f5f5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .gradient-animate {
+            background: linear-gradient(270deg, #051d3f80, #4f7fe880, #60ceb880);
+            background-size: 200% 200%;
+            animation: gradientFlow 15s ease infinite;
+        }
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #60ceb8;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .header-animate {
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .blur-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .blur-shape-1 {
+            background: #60ceb8;
+            width: 300px;
+            height: 300px;
+            top: -50px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blur-shape-2 {
+            background: #4f7fe8;
+            width: 400px;
+            height: 400px;
+            top: 30%;
+            right: -150px;
+            animation-delay: -5s;
+        }
+
+        .blur-shape-3 {
+            background: #051d3f;
+            width: 250px;
+            height: 250px;
+            bottom: -50px;
+            left: 40%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50px, 50px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 100px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-50px, 50px) rotate(270deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .sticky-mobile-cta {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .sticky-mobile-cta {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 50;
+                background: linear-gradient(to top, white, white 80%, transparent);
+                padding: 1rem;
+                transform: translateY(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            
+            .sticky-mobile-cta.visible {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-epi-light">
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm header-animate">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="flex items-center">
+                        <svg class="w-10 h-10" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5L30 15L20 25L10 15L20 5Z" fill="#60ceb8"/>
+                            <path d="M20 15L30 25L20 35L10 25L20 15Z" fill="#4f7fe8"/>
+                            <circle cx="20" cy="20" r="4" fill="#051d3f"/>
+                        </svg>
+                        <span class="ml-3 text-2xl font-bold bg-gradient-to-r from-epi-dark via-epi-blue to-epi-teal text-transparent bg-clip-text font-recoleta">
+                            EPI Nutrition
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 font-inter">
+                    <a href="#" class="nav-link text-epi-dark hover:text-epi-blue transition-colors font-medium">About</a>
+                    <a href="#" class="nav-link text-epi-dark hover:text-epi-blue transition-colors font-medium">Services</a>
+                    <a href="#" class="nav-link text-epi-dark hover:text-epi-blue transition-colors font-medium">Contact</a>
+                    <button class="px-6 py-2 bg-epi-teal text-white rounded-full font-medium 
+                        transition-all duration-300 hover:bg-epi-blue hover:shadow-lg 
+                        transform hover:-translate-y-0.5">
+                        Get Started
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2 rounded-md text-epi-dark hover:bg-gray-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white shadow-2xl md:hidden">
+            <div class="p-4">
+                <button id="close-menu" class="p-2 float-right text-epi-dark hover:bg-gray-100 rounded-md">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="clear-both"></div>
+                <nav class="mt-8 flex flex-col space-y-4">
+                    <a href="#" class="text-epi-dark hover:text-epi-blue transition-colors font-medium p-2">About</a>
+                    <a href="#" class="text-epi-dark hover:text-epi-blue transition-colors font-medium p-2">Services</a>
+                    <a href="#" class="text-epi-dark hover:text-epi-blue transition-colors font-medium p-2">Contact</a>
+                    <button class="mt-4 px-6 py-2 bg-epi-teal text-white rounded-full font-medium 
+                        transition-all duration-300 hover:bg-epi-blue">
+                        Get Started
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20">
+        <!-- Background with animated gradient -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3"
+                alt="Modern cozy medical office" 
+                class="w-full h-full object-cover filter brightness-50"
+            />
+            <div class="absolute inset-0 gradient-animate opacity-80"></div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="space-y-8 animate-fade-in">
+                <!-- Main Headline -->
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                    Optimize Your Biology Like Your Business
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-xl text-white/90 font-medium mb-8 max-w-3xl mx-auto backdrop-blur-sm">
+                    Elite entrepreneurs know: peak performance starts with optimized biology. Discover your Bio-Metabolic Age and unlock the science of sustained high performance.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    <!-- Primary CTA -->
+                    <button class="btn-hover px-8 py-4 bg-epi-teal text-epi-dark rounded-full 
+                        font-semibold text-lg transition-all duration-300 font-inter">
+                        Discover Your True Biological Age
+                    </button>
+
+                    <!-- Secondary CTA -->
+                    <button class="btn-hover px-8 py-4 bg-transparent border-2 border-epi-light 
+                        text-white rounded-full font-semibold text-lg hover:bg-white/10 
+                        transition-all duration-300 font-inter">
+                        Explore Holistic Health Tips
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- After the hero section, add this new section -->
+    <section class="py-20 bg-epi-light/80 relative overflow-hidden backdrop-blur-3xl">
+        <!-- Modern Blur Background -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="blur-shape blur-shape-1"></div>
+            <div class="blur-shape blur-shape-2"></div>
+            <div class="blur-shape blur-shape-3"></div>
+            <!-- Add a subtle noise texture overlay -->
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')] opacity-50"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16 opacity-0 animate-fade-in">
+                <h2 class="text-4xl font-bold text-epi-dark mb-4">The High Performer's Challenge</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    While you're optimizing your business, is your biology keeping pace? Understand your true performance potential through advanced biomarker analysis.
+                </p>
+            </div>
+
+            <!-- Problem Cards with Icons -->
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <!-- Card 1 -->
+                <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-epi-teal/10 rounded-lg">
+                            <svg class="w-8 h-8 text-epi-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-epi-dark ml-4">Limited Health Data</h3>
+                    </div>
+                    <p class="text-gray-600">Basic health metrics don't show the full picture of your performance potential.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-epi-blue/10 rounded-lg">
+                            <svg class="w-8 h-8 text-epi-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-epi-dark ml-4">Hidden Energy Drains</h3>
+                    </div>
+                    <p class="text-gray-600">Key factors affecting your daily performance are often missed by standard tests.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-epi-teal/10 rounded-lg">
+                            <svg class="w-8 h-8 text-epi-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-epi-dark ml-4">Scattered Information</h3>
+                    </div>
+                    <p class="text-gray-600">Your health data is spread across different apps and doctors, making it hard to see the big picture.</p>
+                </div>
+            </div>
+
+            <!-- Solution Section -->
+            <div class="bg-white/90 backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-xl">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <!-- Solution Text -->
+                    <div class="space-y-6">
+                        <h3 class="text-3xl font-bold text-epi-dark mb-4">The EPI Executive Edge</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-epi-teal flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <p class="text-gray-600">Comprehensive Bio-Metabolic optimization engineered for high performers</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-epi-teal flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <p class="text-gray-600">AI-driven recommendations calibrated for executive lifestyles</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-epi-teal flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <p class="text-gray-600">Continuous performance tracking with real-time optimization protocols</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Visualization -->
+                    <div class="relative h-64 bg-gray-50 rounded-xl p-6">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="relative w-48 h-48" id="age-reduction-circle">
+                                    <svg class="transform -rotate-90 w-48 h-48" viewBox="0 0 100 100">
+                                        <circle 
+                                            class="text-gray-200" 
+                                            stroke-width="8" 
+                                            stroke="currentColor" 
+                                            fill="none" 
+                                            r="42" 
+                                            cx="50" 
+                                            cy="50"
+                                        />
+                                        <circle 
+                                            class="text-epi-teal transition-all duration-1500 ease-out" 
+                                            stroke-width="8" 
+                                            stroke="currentColor" 
+                                            fill="none" 
+                                            r="42" 
+                                            cx="50" 
+                                            cy="50" 
+                                            stroke-dasharray="264, 264" 
+                                            stroke-dashoffset="264"
+                                            id="progress-circle"
+                                        />
+                                    </svg>
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <span class="text-4xl font-bold text-epi-dark" id="age-counter">0</span>
+                                        <span class="text-xl text-epi-dark">yrs</span>
+                                    </div>
+                                </div>
+                                <p class="mt-4 text-gray-600 font-medium">Average Biological Age Reduction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-24 bg-gradient-to-b from-epi-light to-white relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-epi-dark mb-4">Performance Optimization Suite</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Advanced technology meets holistic health for personalized wellness optimization
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Feature 1: Bio-Metabolic Age Reversal -->
+                <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="p-3 bg-epi-teal/10 rounded-lg">
+                                <svg class="w-8 h-8 text-epi-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-epi-dark ml-4">Bio-Metabolic Age Optimization</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Advanced biomarker analysis calibrated for high-performance individuals</p>
+                        
+                        <!-- Age Progress Tracker -->
+                        <div class="mt-auto">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-600">Biological Age Reduction</span>
+                                <span class="text-sm font-bold text-epi-teal">-12 years</span>
+                            </div>
+                            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="h-full bg-epi-teal rounded-full transition-all duration-1000 group-hover:w-[75%] w-0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2: AI-Powered Guidance -->
+                <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="p-3 bg-epi-blue/10 rounded-lg">
+                                <svg class="w-8 h-8 text-epi-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-epi-dark ml-4">Executive-Grade AI Insights</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Data-driven recommendations that fit your demanding schedule</p>
+                        
+                        <!-- Animated AI Recommendations -->
+                        <div class="mt-auto space-y-3">
+                            <div class="flex items-center p-3 bg-gray-50 rounded-lg transform transition-all duration-300 group-hover:translate-x-2">
+                                <span class="w-2 h-2 bg-epi-blue rounded-full mr-3"></span>
+                                <p class="text-sm text-gray-600">Optimize sleep schedule: 10:30 PM - 6:30 AM</p>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-50 rounded-lg transform transition-all duration-300 group-hover:translate-x-2 delay-100">
+                                <span class="w-2 h-2 bg-epi-blue rounded-full mr-3"></span>
+                                <p class="text-sm text-gray-600">Increase protein intake by 20g daily</p>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-50 rounded-lg transform transition-all duration-300 group-hover:translate-x-2 delay-200">
+                                <span class="w-2 h-2 bg-epi-blue rounded-full mr-3"></span>
+                                <p class="text-sm text-gray-600">Add 15 min morning meditation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Holistic Health -->
+                <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="p-3 bg-epi-teal/10 rounded-lg">
+                                <svg class="w-8 h-8 text-epi-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-epi-dark ml-4">Comprehensive Performance Protocol</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Integrated approach to energy, focus, and longevity optimization</p>
+                        
+                        <!-- Health Pillars Icons -->
+                        <div class="mt-auto grid grid-cols-3 gap-4">
+                            <div class="text-center group-hover:transform group-hover:scale-110 transition-transform duration-300">
+                                <div class="mx-auto w-12 h-12 bg-epi-teal/10 rounded-full flex items-center justify-center mb-2">
+                                    <svg class="w-6 h-6 text-epi-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-600">Nutrition</span>
+                            </div>
+                            <div class="text-center group-hover:transform group-hover:scale-110 transition-transform duration-300 delay-100">
+                                <div class="mx-auto w-12 h-12 bg-epi-blue/10 rounded-full flex items-center justify-center mb-2">
+                                    <svg class="w-6 h-6 text-epi-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-600">Stress</span>
+                            </div>
+                            <div class="text-center group-hover:transform group-hover:scale-110 transition-transform duration-300 delay-200">
+                                <div class="mx-auto w-12 h-12 bg-epi-teal/10 rounded-full flex items-center justify-center mb-2">
+                                    <svg class="w-6 h-6 text-epi-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-600">Movement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 4: Scientific Trust -->
+                <div class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center mb-6">
+                            <div class="p-3 bg-epi-blue/10 rounded-lg">
+                                <svg class="w-8 h-8 text-epi-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-epi-dark ml-4">Scientific Validation</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Backed by leading performance researchers and elite practitioners</p>
+                        
+                        <!-- Trust Badges -->
+                        <div class="mt-auto grid grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg text-center group-hover:bg-gray-100 transition-colors duration-300">
+                                <div class="text-2xl font-bold text-epi-blue mb-1">10+</div>
+                                <div class="text-sm text-gray-600">Years Research</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg text-center group-hover:bg-gray-100 transition-colors duration-300">
+                                <div class="text-2xl font-bold text-epi-blue mb-1">50k+</div>
+                                <div class="text-sm text-gray-600">Users</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg text-center group-hover:bg-gray-100 transition-colors duration-300">
+                                <div class="text-2xl font-bold text-epi-blue mb-1">95%</div>
+                                <div class="text-sm text-gray-600">Success Rate</div>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg text-center group-hover:bg-gray-100 transition-colors duration-300">
+                                <div class="text-2xl font-bold text-epi-blue mb-1">24/7</div>
+                                <div class="text-sm text-gray-600">Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-24 bg-gradient-to-b from-white to-epi-light/30 relative overflow-hidden">
+        <!-- Decorative background elements -->
+        <div class="absolute inset-0">
+            <div class="absolute top-1/2 left-0 w-64 h-64 bg-epi-teal/10 rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-epi-blue/10 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-epi-dark mb-4">Success Stories from Elite Performers</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Join thousands who have transformed their health journey with EPI Nutrition
+                </p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex flex-col h-full">
+                        <!-- Profile -->
+                        <div class="flex items-center mb-6">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e" 
+                                     alt="Michael Chen" 
+                                     class="w-16 h-16 rounded-full object-cover border-2 border-epi-teal shadow-lg">
+                                <div class="absolute -bottom-2 -right-2 bg-epi-teal rounded-full p-1">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-epi-dark">Michael Chen</h4>
+                                <p class="text-sm text-gray-600">CEO & Founder, TechVision Global</p>
+                                <div class="flex text-epi-teal mt-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <!-- Repeat star SVG 4 more times -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Quote -->
+                        <blockquote class="text-gray-600 italic mb-6">
+                            "As a tech founder managing a global team, I need to operate at peak performance 24/7. EPI's data-driven approach helped me optimize my sleep and energy levels, leading to better decision-making and increased productivity. My biological age has dropped by 8 years, and I feel more equipped than ever to scale my company."
+                        </blockquote>
+                        <div class="mt-auto">
+                            <p class="text-sm text-gray-500">Biological Age Reduction: -8 years</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Testimonial -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex flex-col h-full">
+                        <!-- Video Placeholder -->
+                        <div class="relative mb-6 rounded-xl overflow-hidden bg-epi-dark/5 aspect-video">
+                            <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51" 
+                                 alt="Video thumbnail" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <button class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors duration-300">
+                                    <svg class="w-8 h-8 text-epi-blue" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Profile -->
+                        <div class="flex items-center mb-6">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956" 
+                                     alt="Sarah Johnson" 
+                                     class="w-16 h-16 rounded-full object-cover border-2 border-epi-teal shadow-lg">
+                                <div class="absolute -bottom-2 -right-2 bg-epi-teal rounded-full p-1">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold text-epi-dark">Sarah Johnson</h4>
+                                <p class="text-sm text-gray-600">Managing Partner, Venture Capital</p>
+                                <div class="flex text-epi-teal mt-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <!-- Repeat star SVG 4 more times -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Quote -->
+                        <blockquote class="text-gray-600 italic mb-6">
+                            "EPI's data-driven approach to health optimization aligns perfectly with how I evaluate investments. The ROI on my biological performance has been exceptional."
+                        </blockquote>
+                        <div class="mt-auto">
+                            <p class="text-sm text-gray-500">Biological Age Reduction: -6 years</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="flex flex-col h-full">
+                        <!-- Profile -->
+                        <div class="flex items-center mb-6">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d" 
+                                     alt="David Miller" 
+                                     class="w-16 h-16 rounded-full object-cover border-2 border-epi-teal">
+                                <div class="absolute -bottom-2 -right-2 bg-epi-teal rounded-full p-1">
+                                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Quote -->
+                        <blockquote class="text-gray-600 italic mb-6">
+                            "Running multiple companies requires peak performance. EPI's precision approach to biological optimization gives me the edge I need to stay ahead."
+                        </blockquote>
+                        <div class="mt-auto">
+                            <p class="text-sm text-gray-500">Biological Age Reduction: -6 years</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scientific Validation Badge -->
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="inline-flex items-center px-4 py-2 bg-white/50 backdrop-blur-sm rounded-full shadow-sm">
+                    <svg class="w-5 h-5 text-epi-blue mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <span class="text-sm text-gray-600">Backed by Research & Real-World Testing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-gradient-to-b from-white to-epi-light/30 relative">
+        <!-- Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute right-0 top-0 w-1/3 h-1/3 bg-epi-teal/5 rounded-full filter blur-[100px]"></div>
+            <div class="absolute left-0 bottom-0 w-1/3 h-1/3 bg-epi-blue/5 rounded-full filter blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-epi-dark mb-4">Executive Performance FAQ</h2>
+                <p class="text-xl text-gray-600">Everything you need to know about EPI and bio-metabolic age optimization</p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="space-y-4" id="faq-accordion">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none" 
+                            onclick="toggleFAQ(this)" 
+                            aria-expanded="false">
+                        <span class="text-lg font-semibold text-epi-dark">How does Bio-Metabolic Age impact executive performance?</span>
+                        <svg class="w-6 h-6 text-epi-blue transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Bio-Metabolic Age is a comprehensive measure of your biological optimization status, directly correlating with executive performance metrics including:
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li>Mental clarity and decision-making capacity</li>
+                                <li>Energy management and recovery efficiency</li>
+                                <li>Stress resilience and adaptation</li>
+                                <li>Long-term performance sustainability</li>
+                                <li>Cognitive endurance and focus</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none"
+                            onclick="toggleFAQ(this)"
+                            aria-expanded="false">
+                        <span class="text-lg font-semibold text-epi-dark">How does EPI integrate with an executive lifestyle?</span>
+                        <svg class="w-6 h-6 text-epi-blue transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300">
+                        <div class="px-6 pb-4 text-gray-600">
+                            EPI is engineered for busy executives with:
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li>Time-efficient optimization protocols</li>
+                                <li>Travel-adapted recommendations</li>
+                                <li>High-stress environment considerations</li>
+                                <li>Executive schedule integration</li>
+                                <li>Priority support and concierge service</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none"
+                            onclick="toggleFAQ(this)"
+                            aria-expanded="false">
+                        <span class="text-lg font-semibold text-epi-dark">What's the ROI on biological optimization?</span>
+                        <svg class="w-6 h-6 text-epi-blue transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300">
+                        <div class="px-6 pb-4 text-gray-600">
+                            Our executive users report:
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li>30% increase in sustained energy levels</li>
+                                <li>Improved decision-making clarity</li>
+                                <li>Enhanced stress resilience</li>
+                                <li>Better sleep quality despite demanding schedules</li>
+                                <li>Measurable improvements in key performance metrics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                    <button class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none"
+                            onclick="toggleFAQ(this)"
+                            aria-expanded="false">
+                        <span class="text-lg font-semibold text-epi-dark">How is EPI different from executive health programs?</span>
+                        <svg class="w-6 h-6 text-epi-blue transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300">
+                        <div class="px-6 pb-4 text-gray-600">
+                            EPI provides:
+                            <ul class="list-disc ml-6 mt-2 space-y-1">
+                                <li>Real-time performance optimization</li>
+                                <li>AI-powered personalization for executives</li>
+                                <li>Integrated data analytics dashboard</li>
+                                <li>Evidence-based protocols for peak performance</li>
+                                <li>Continuous adaptation to your executive lifestyle</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="relative py-24 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-gradient-to-br from-epi-dark/5 to-epi-teal/5"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-epi-teal/10 rounded-full filter blur-[100px] transform translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-epi-blue/10 rounded-full filter blur-[100px] transform -translate-x-1/2 translate-y-1/2"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Main Content -->
+                <h2 class="text-4xl md:text-5xl font-bold text-epi-dark mb-6">
+                    Optimize Your Performance Edge
+                </h2>
+                
+                <!-- Countdown Timer -->
+                <div class="mb-8">
+                    <p class="text-lg text-gray-600 mb-4">Limited Early Access Spots Available</p>
+                    <div class="flex justify-center gap-4" id="countdown">
+                        <div class="bg-white rounded-xl p-3 shadow-lg min-w-[80px]">
+                            <div class="text-2xl font-bold text-epi-blue" id="days">00</div>
+                            <div class="text-sm text-gray-500">Days</div>
+                        </div>
+                        <div class="bg-white rounded-xl p-3 shadow-lg min-w-[80px]">
+                            <div class="text-2xl font-bold text-epi-blue" id="hours">00</div>
+                            <div class="text-sm text-gray-500">Hours</div>
+                        </div>
+                        <div class="bg-white rounded-xl p-3 shadow-lg min-w-[80px]">
+                            <div class="text-2xl font-bold text-epi-blue" id="minutes">00</div>
+                            <div class="text-sm text-gray-500">Minutes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                    <div class="bg-white/50 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-2xl font-bold text-epi-blue">98%</div>
+                        <div class="text-sm text-gray-600">Success Rate</div>
+                    </div>
+                    <div class="bg-white/50 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-2xl font-bold text-epi-blue">10k+</div>
+                        <div class="text-sm text-gray-600">Early Users</div>
+                    </div>
+                    <div class="bg-white/50 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-2xl font-bold text-epi-blue">-8yrs</div>
+                        <div class="text-sm text-gray-600">Avg. Age Reduction</div>
+                    </div>
+                    <div class="bg-white/50 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-2xl font-bold text-epi-blue">30d</div>
+                        <div class="text-sm text-gray-600">Money Back</div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="space-y-6">
+                    <button class="inline-flex items-center px-8 py-4 text-lg font-semibold text-white 
+                        bg-gradient-to-r from-epi-blue to-epi-teal rounded-full shadow-lg 
+                        hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300
+                        animate-[pulse_2s_ease-in-out_infinite]">
+                        Secure Your Executive Access
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </button>
+                    <p class="text-sm text-gray-500">Only 50 spots remaining for early access</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Mobile CTA -->
+        <div class="sticky-mobile-cta">
+            <div class="max-w-md mx-auto">
+                <button class="w-full px-6 py-4 text-lg font-semibold text-white 
+                    bg-gradient-to-r from-epi-blue to-epi-teal rounded-full shadow-lg 
+                    hover:shadow-xl transition-all duration-300">
+                    Join the Waitlist Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add this script before closing body tag -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Counter animation function
+        function animateCounter(target, duration, element) {
+            let start = 0;
+            const increment = target / (duration / 16); // 60 FPS
+            const startTime = performance.now();
+            
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                start = Math.min(Math.ceil(target * progress), Math.abs(target));
+                element.textContent = `-${start}`;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+            
+            requestAnimationFrame(update);
+        }
+
+        // Circle progress animation
+        function animateCircle(percent) {
+            const circle = document.getElementById('progress-circle');
+            const circumference = 264; // 2 * π * radius
+            const offset = circumference - (percent / 100 * circumference);
+            circle.style.strokeDashoffset = offset;
+        }
+
+        // Intersection Observer for triggering animations
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Trigger circle animation
+                    animateCircle(75); // 75% progress
+                    
+                    // Trigger counter animation
+                    const counter = document.getElementById('age-counter');
+                    animateCounter(12, 1500, counter); // 1.5 seconds duration
+                    
+                    // Unobserve after animation
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Start observing the circle container
+        observer.observe(document.getElementById('age-reduction-circle'));
+
+        // Optional: Add hover effect
+        const circleContainer = document.getElementById('age-reduction-circle');
+        circleContainer.addEventListener('mouseenter', () => {
+            animateCircle(85); // Increase progress on hover
+            const counter = document.getElementById('age-counter');
+            animateCounter(14, 800, counter); // Show higher potential
+        });
+
+        circleContainer.addEventListener('mouseleave', () => {
+            animateCircle(75); // Return to original progress
+            const counter = document.getElementById('age-counter');
+            animateCounter(12, 800, counter); // Return to original value
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 3); // 3 days from now
+            
+            const now = new Date().getTime();
+            const distance = endDate.getTime() - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        }
+        
+        // Update countdown every minute
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Sticky Mobile CTA
+        const stickyCta = document.querySelector('.sticky-mobile-cta');
+        let lastScrollPosition = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > lastScrollPosition && currentScroll > 300) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+            
+            lastScrollPosition = currentScroll;
+        });
+
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle aria-expanded
+            button.setAttribute('aria-expanded', !isExpanded);
+            
+            // Rotate icon
+            icon.style.transform = isExpanded ? '' : 'rotate(180deg)';
+            
+            // Toggle content
+            if (isExpanded) {
+                content.style.maxHeight = '0';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+
+        // Optional: Close other FAQs when opening a new one
+        document.querySelectorAll('#faq-accordion button').forEach(button => {
+            button.addEventListener('click', () => {
+                const currentContent = button.nextElementSibling;
+                
+                document.querySelectorAll('#faq-accordion .max-h-0').forEach(content => {
+                    if (content !== currentContent) {
+                        content.style.maxHeight = '0';
+                        const btn = content.previousElementSibling;
+                        btn.setAttribute('aria-expanded', 'false');
+                        btn.querySelector('svg').style.transform = '';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
